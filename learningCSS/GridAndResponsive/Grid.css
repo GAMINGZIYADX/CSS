@@ -1,0 +1,19 @@
+.example {
+  /* styles for the example container */
+    display: grid;/*change the display to grid*/
+    grid-template-columns : 80px 80px 80px;/*change the width of the columns*/
+    grid-template-rows : 80px 80px 80px; /*change the height of the rows*/
+    grid-template-columns : 1fr 2fr 1fr; /*change the width of the columns*/
+    row-gap : 10px; /*change the gap between the rows and columns*/
+    column-gap : 10px; /*change the gap between the rows and columns*/
+    grid-auto-rows : 100px; /*automatically set the height of the rows*/
+    grid-template-columns : 200px minmax(200px, 1fr); /*fills the second column with the remaining space*/
+    grid-template-columns : repeat(auto-fit, minmax(200px, 1fr)); /*automatically set the width of the columns*/
+    grid-column : 1 / 3; /*start at the first column and span to the third column*/
+    grid-column : 2 / 4; /*start at the second column and span to the fourth column*/
+    grid-row : 1 / 3; /*start at the first row and span to the third row*/
+    grid-column : 3; /*start at the third column*/
+    grid-column : span 2; /*span two columns*/
+    grid-row : span 2; /*span two rows*/
+    
+}   
