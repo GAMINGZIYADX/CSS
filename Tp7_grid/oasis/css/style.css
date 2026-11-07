@@ -1,9 +1,4 @@
 /* css/style.css */
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .page {
   display: grid;
   grid-template-areas:
@@ -26,15 +21,6 @@ img {
   max-width: 100%;
   height: auto;
 }
-
-/* Les photos ont des proportions différentes : on les uniformise pour une grille régulière */
-.carte img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-}
-
 .offres { display: grid; grid-template-columns: 1fr; gap: 1rem; }
 
 /* ERREUR 3 : le bloc 768px était écrit APRÈS le bloc 1024px. À 1200px les deux conditions sont vraies
