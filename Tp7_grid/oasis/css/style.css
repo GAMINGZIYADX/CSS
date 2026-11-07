@@ -1,0 +1,51 @@
+/* css/style.css */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.page {
+  display: grid;
+  grid-template-areas:
+    "entete"
+    "contenu"
+    "pied";
+}
+
+.page header { grid-area: entete; }
+
+/* ERREUR 2 : la zone s'appelait "content" alors que grid-template-areas déclare "contenu".
+   Le nom ne correspondait à aucune zone : le main n'était pas placé là où prévu. */
+.page main   { grid-area: contenu; }
+
+.page footer { grid-area: pied; }
+
+/* ERREUR 5 : les images avaient leur taille d'origine (800px) et dépassaient de leur carte
+   sur téléphone, d'où le défilement horizontal. max-width: 100% les limite à la largeur de leur conteneur. */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.offres { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+
+/* ERREUR 3 : le bloc 768px était écrit APRÈS le bloc 1024px. À 1200px les deux conditions sont vraies
+   et la règle écrite en dernier (2 colonnes) l'emportait sur celle à 3 colonnes.
+   Les media queries min-width s'écrivent de la plus petite à la plus grande largeur. */
+@media (min-width: 768px) {
+  .page {
+    grid-template-columns: 1fr 250px;
+    /* ERREUR 4 : la ligne "contenu" n'avait qu'une cellule alors que les autres lignes en ont deux.
+       Toutes les lignes de grid-template-areas doivent avoir le même nombre de cellules,
+       sinon la déclaration entière est invalide et ignorée. */
+    grid-template-areas:
+      "entete entete"
+      "contenu contenu"
+      "pied pied";
+  }
+  .offres { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .offres { grid-template-columns: repeat(3, 1fr); }
+}

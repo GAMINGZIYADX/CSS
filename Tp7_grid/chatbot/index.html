@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARIA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="chat-header">
+    <img src="images/avatar.svg" alt="Avatar de ARIA" class="avatar">
+    <div>
+      <h1>ARIA</h1>
+      <p class="statut">En ligne</p>
+    </div>
+  </header>
+
+  <nav class="historique">
+    <h2>Historique</h2>
+    <ul>
+      <li><a href="#">Horaires d’ouverture</a></li>
+      <li><a href="#">Résiliation de contrat</a></li>
+      <li><a href="#">Déclaration de sinistre</a></li>
+      <li><a href="#">Demande de devis</a></li>
+    </ul>
+  </nav>
+
+  <main class="conversation">
+    <section class="messages">
+      <p class="message bot">Bonjour ! Comment puis-je vous aider ?</p>
+      <p class="message user">Quels sont vos horaires ?</p>
+      <p class="message bot">Du lundi au samedi, de 9h à 18h.</p>
+    </section>
+
+    <form class="chat-form" action="#">
+      <label for="message">Votre message</label>
+      <input type="text" id="message" placeholder="Écrivez votre message...">
+      <button type="submit">Envoyer</button>
+    </form>
+  </main>
+
+  <aside>
+    <h2>Je peux vous aider</h2>
+    <ul class="capacites">
+      <li>Horaires</li>
+      <li>Contrats</li>
+      <li>Sinistres</li>
+      <li>Devis</li>
+    </ul>
+  </aside>
+
+  <footer>ARIA — Assistant virtuel</footer>
+</body>
+</html>

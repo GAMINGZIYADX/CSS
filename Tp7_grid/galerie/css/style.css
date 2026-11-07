@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Les 9 éléments : couleur de fond, texte centré, hauteur minimale de 100px */
+.photo {
+  background-color: #2e75b6;
+  color: #fff;
+  text-align: center;
+  min-height: 100px;
+}
+
+/* ---------- Étape 1 : 3 colonnes égales, 10px d'espace ---------- */
+/*
+.galerie {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+*/
+
+/* ---------- Étape 2a : la même grille avec repeat() ---------- */
+/*
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+*/
+
+/* ---------- Étape 2b : colonnes de proportions 1, 2 et 1 ---------- */
+/*
+.galerie {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 10px;
+}
+*/
+
+/* ---------- Étape 3 : retour à 3 colonnes égales ; l'élément 1 occupe 2 colonnes et 2 rangées ---------- */
+/*
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.p1 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+*/
+
+/* ---------- Étape 4 : l'élément 9 occupe toute la largeur (1 / -1 = de la première à la dernière ligne) ---------- */
+/*
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.p1 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.p9 {
+  grid-column: 1 / -1;
+}
+*/
+
+/* ---------- Étape 5 : toutes les rangées font 120px, y compris les rangées automatiques ---------- */
+/*
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 120px;
+  gap: 10px;
+}
+.p1 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.p9 {
+  grid-column: 1 / -1;
+}
+*/
+
+/* ---------- Étape 6 (version active) : grille qui s'adapte seule ----------
+   Colonnes de 180px minimum, autant que la largeur le permet.
+   Observation : en réduisant la fenêtre, le nombre de colonnes diminue tout seul,
+   sans media query. */
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-auto-rows: 120px;
+  gap: 10px;
+}
+.p1 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.p9 {
+  grid-column: 1 / -1;
+}
