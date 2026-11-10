@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: Arial, sans-serif;
+  background-color: #eef2f7;
+  color: #1f3864;
+}
+
+/* ---------- 1. Style de base des boutons ---------- */
+.boutons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.boutons button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #fff;
+  background-color: #2e75b6;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ---------- 2. b1 : fond bleu foncé en 0,2 s ---------- */
+.b1 {
+  transition: background-color 0.2s;
+}
+
+.b1:hover {
+  background-color: #1f3864;
+}
+
+/* ---------- 3. b2 : monte de 4px + ombre ---------- */
+.b2 {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.b2:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- 4. b3 : +10 % au survol, 95 % au clic ---------- */
+.b3 {
+  transition: transform 0.2s;
+}
+
+.b3:hover {
+  transform: scale(1.1);
+}
+
+.b3:active {
+  transform: scale(0.95);
+}
+
+/* ---------- 5. b4 : fond blanc / bordure bleue ---------- */
+/* La couleur du texte démarre 0,1 s après le fond (délai de 0,1 s) */
+.boutons .b4 {
+  color: #2e75b6;
+  background-color: #fff;
+  border: 2px solid #2e75b6;
+  transition: background-color 0.3s, color 0.3s 0.1s;
+}
+
+.boutons .b4:hover {
+  color: #fff;
+  background-color: #2e75b6;
+}
+
+/* ---------- 6. Offres en grille ---------- */
+.offres {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.offre {
+  position: relative; /* repère pour le badge */
+  padding: 32px 24px 24px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.offre:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+}
+
+.offre h2 {
+  margin-top: 0;
+}
+
+.choisir {
+  color: #2e75b6;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* inline-block : un transform n'agit pas sur un élément inline */
+.fleche {
+  display: inline-block;
+  transition: transform 0.3s ease-out;
+}
+
+.offre:hover .fleche {
+  transform: translateX(5px);
+}
+
+/* ---------- 7. Badge coin supérieur droit, incliné ---------- */
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: #e74c3c;
+  border-radius: 999px;
+  transform: rotate(-10deg);
+  transition: transform 0.3s ease-out;
+}
+
+.offre:hover .badge {
+  transform: rotate(0deg);
+}

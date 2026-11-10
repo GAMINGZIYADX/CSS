@@ -1,0 +1,111 @@
+/* Mise en page de la page de test (hors exercice) */
+body {
+  font-family: Arial, sans-serif;
+  padding: 24px;
+  min-height: 1200px;
+}
+
+/* 1. Le bouton change de couleur en douceur, à l'aller et au retour */
+/* ERREUR : la transition était déclarée uniquement dans :hover. Elle ne s'applique donc
+   qu'à l'aller (quand l'état :hover est actif). Au retour, :hover disparaît, la transition
+   avec lui, et la couleur change brutalement. Il faut la placer sur l'état de base. */
+.bouton {
+  padding: 12px 24px;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #2E75B6;
+  transition: background-color 0.3s;
+}
+.bouton:hover { background-color: #1F3864; }
+
+/* 2. Le sous-menu apparaît en fondu au survol du menu */
+/* ERREUR : display n'est pas une propriété animable, « transition: display » ne fait rien
+   et l'élément passe de none à block instantanément (pas de fondu).
+   SOLUTION : opacity (animable) pour le fondu + visibility (animable, elle bascule
+   en fin/début de transition) pour que le sous-menu caché ne soit ni visible ni cliquable. */
+.menu {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #d6e4f0;
+  border-radius: 8px;
+  position: relative;
+}
+.sous-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 4px 0 0;
+  padding: 8px 16px;
+  list-style: none;
+  background-color: #f2f7fc;
+  border: 1px solid #cfd8e3;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.menu:hover .sous-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 3. Au survol, l'icône s'agrandit ET tourne */
+/* ERREUR : deux déclarations « transform » dans la même règle : la seconde écrase la
+   première (seule rotate s'applique, scale est perdu). Il faut combiner les deux
+   fonctions dans une seule valeur de transform. */
+.icone {
+  display: inline-block;
+  font-size: 2rem;
+  color: #2E75B6;
+  transition: transform 0.3s;
+}
+.icone:hover { transform: scale(1.2) rotate(15deg); }
+
+/* 4. La carte apparaît en fondu au chargement */
+/* ERREUR : le nom de l'animation ne correspond pas : @keyframes s'appelle « apparition »
+   mais .carte appelle « apparaitre », qui n'existe pas. Le navigateur ignore l'animation.
+   Les deux noms doivent être identiques. */
+@keyframes apparition { from { opacity: 0; } to { opacity: 1; } }
+.carte {
+  display: inline-block;
+  padding: 16px 24px;
+  background-color: #d6e4f0;
+  border-radius: 8px;
+  animation: apparition 0.5s ease-out;
+}
+
+/* 5. Le cercle de chargement tourne sans fin */
+/* ERREUR : aucune durée n'est donnée. La durée par défaut est 0s : l'animation s'exécute
+   instantanément et on ne voit rien tourner. Il faut préciser une durée (ex. 1s). */
+@keyframes tourner { to { transform: rotate(360deg); } }
+.cercle {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #d6e4f0;
+  border-top-color: #2E75B6;
+  border-radius: 50%;
+  animation: tourner 1s linear infinite;
+}
+
+/* 6. L'aiguille fait un tour complet */
+/* ERREUR : rotate(360) n'a pas d'unité. rotate() exige un angle (deg, turn, rad...),
+   la valeur est invalide et la rotation ne se fait pas. Il faut écrire rotate(360deg). */
+@keyframes tour { to { transform: rotate(360deg); } }
+.horloge {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border: 4px solid #1F3864;
+  border-radius: 50%;
+}
+.aiguille {
+  position: absolute;
+  left: calc(50% - 2px);
+  bottom: 50%;
+  width: 4px;
+  height: 45px;
+  background-color: #e74c3c;
+  transform-origin: bottom center; /* pivote autour du centre du cadran */
+  animation: tour 2s linear infinite;
+}
